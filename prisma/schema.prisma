@@ -1,0 +1,223 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         UserRole @default(USER)
+
+  xp           Int    @default(0)
+  level        Int    @default(1)
+  title        String @default("Novice Adventurer")
+  totalCorrect Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  submissions Submission[]
+  progresses  UserProgress[]
+  badges      UserBadge[]
+  xpLogs      XpLog[]
+  streak      Streak?
+  bookmarks   Bookmark[]
+}
+
+model Category {
+  id          String @id @default(cuid())
+  name        String
+  slug        String @unique
+  description String
+  accentColor String @default("#2563eb")
+  order       Int    @default(0)
+
+  quests Quest[]
+}
+
+model Quest {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique
+  description String
+  content     String
+  explanation String
+  type        QuestType
+  difficulty  Difficulty
+  xpReward    Int
+
+  expectedAnswer String?
+  starterCode    String?
+  isPublished    Boolean @default(false)
+  sortOrder      Int     @default(0)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  choices     Choice[]
+  testCases   TestCase[]
+  submissions Submission[]
+  progresses  UserProgress[]
+  bookmarks   Bookmark[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([difficulty])
+  @@index([isPublished])
+}
+
+model Choice {
+  id        String  @id @default(cuid())
+  text      String
+  isCorrect Boolean @default(false)
+  order     Int     @default(0)
+
+  questId String
+  quest   Quest  @relation(fields: [questId], references: [id], onDelete: Cascade)
+
+  @@index([questId])
+}
+
+model TestCase {
+  id             String  @id @default(cuid())
+  input          String
+  expectedOutput String
+  isHidden       Boolean @default(false)
+
+  questId String
+  quest   Quest  @relation(fields: [questId], references: [id], onDelete: Cascade)
+}
+
+model Submission {
+  id        String   @id @default(cuid())
+  answer    String
+  isCorrect Boolean
+  score     Int      @default(0)
+  xpEarned  Int      @default(0)
+  feedback  String
+  createdAt DateTime @default(now())
+
+  userId  String
+  questId String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quest   Quest  @relation(fields: [questId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([questId])
+  @@index([createdAt])
+}
+
+model UserProgress {
+  id          String         @id @default(cuid())
+  status      ProgressStatus @default(NOT_STARTED)
+  attempts    Int            @default(0)
+  bestScore   Int            @default(0)
+  completedAt DateTime?
+  updatedAt   DateTime       @updatedAt
+
+  userId  String
+  questId String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quest   Quest  @relation(fields: [questId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questId])
+  @@index([status])
+}
+
+model Badge {
+  id          String    @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  rule        BadgeRule
+  ruleValue   String?
+  order       Int       @default(0)
+
+  users UserBadge[]
+}
+
+model UserBadge {
+  id       String   @id @default(cuid())
+  earnedAt DateTime @default(now())
+
+  userId  String
+  badgeId String
+  user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge   Badge @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+}
+
+model XpLog {
+  id        String   @id @default(cuid())
+  amount    Int
+  reason    String
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Streak {
+  id            String    @id @default(cuid())
+  currentCount  Int       @default(0)
+  longestCount  Int       @default(0)
+  lastStudiedAt DateTime?
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  userId  String
+  questId String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quest   Quest  @relation(fields: [questId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questId])
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum QuestType {
+  MULTIPLE_CHOICE
+  TEXT_INPUT
+  CODE_INPUT
+}
+
+enum Difficulty {
+  BEGINNER
+  NORMAL
+  HARD
+  BOSS
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum BadgeRule {
+  FIRST_CORRECT
+  TEN_CORRECT
+  FIRST_BOSS
+  SEVEN_DAY_STREAK
+  CATEGORY_COMPLETE
+}
