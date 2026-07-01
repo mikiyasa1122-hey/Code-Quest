@@ -1,0 +1,26 @@
+<svg width="760" height="420" viewBox="0 0 760 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Code Quest learning map</title>
+  <desc id="desc">A stylized route connecting coding quest areas.</desc>
+  <rect width="760" height="420" rx="12" fill="#F7F5EF"/>
+  <path d="M102 318C154 248 196 288 240 220C287 148 345 177 392 125C452 59 528 84 631 58" stroke="#172033" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 30"/>
+  <circle cx="105" cy="318" r="34" fill="#2563EB"/>
+  <circle cx="240" cy="220" r="34" fill="#7C3AED"/>
+  <circle cx="392" cy="125" r="34" fill="#0F766E"/>
+  <circle cx="631" cy="58" r="34" fill="#BE123C"/>
+  <rect x="73" y="290" width="64" height="56" rx="8" fill="#FFFFFF" stroke="#172033" stroke-width="4"/>
+  <path d="M91 318L101 328L121 306" stroke="#2563EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="209" y="192" width="62" height="56" rx="8" fill="#FFFFFF" stroke="#172033" stroke-width="4"/>
+  <path d="M233 209L220 221L233 233" stroke="#7C3AED" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M247 209L260 221L247 233" stroke="#7C3AED" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="361" y="97" width="62" height="56" rx="8" fill="#FFFFFF" stroke="#172033" stroke-width="4"/>
+  <path d="M378 123H407" stroke="#0F766E" stroke-width="6" stroke-linecap="round"/>
+  <path d="M378 137H398" stroke="#0F766E" stroke-width="6" stroke-linecap="round"/>
+  <rect x="600" y="30" width="62" height="56" rx="8" fill="#FFFFFF" stroke="#172033" stroke-width="4"/>
+  <path d="M631 47L638 60L653 62L642 72L645 86L631 79L617 86L620 72L609 62L624 60L631 47Z" fill="#BE123C"/>
+  <rect x="87" y="54" width="150" height="86" rx="10" fill="#FFFFFF" stroke="#E7E1D5" stroke-width="3"/>
+  <path d="M113 91H202" stroke="#172033" stroke-width="8" stroke-linecap="round"/>
+  <path d="M113 116H178" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
+  <rect x="480" y="272" width="190" height="92" rx="10" fill="#FFFFFF" stroke="#E7E1D5" stroke-width="3"/>
+  <path d="M507 309H642" stroke="#172033" stroke-width="8" stroke-linecap="round"/>
+  <path d="M507 335H601" stroke="#D97706" stroke-width="8" stroke-linecap="round"/>
+</svg>

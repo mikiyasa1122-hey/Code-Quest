@@ -65,6 +65,30 @@ pnpm dev
 - ストリークとバッジ付与
 - 管理者による問題作成、編集
 
+## GitHub Pages用のDBなし版
+
+`docs/`には、GitHub Pagesで公開できる静的デモ版を入れています。
+
+- DB接続なし
+- ログインなし
+- 問題データは`docs/app.js`
+- 進捗、XP、バッジ、回答履歴はブラウザの`localStorage`に保存
+- 本格運用向けのNext.js + Prisma + PostgreSQL版は`src/`と`prisma/`に残しています
+
+GitHub Pagesでは以下のように設定します。
+
+```txt
+Source: Deploy from a branch
+Branch: main
+Folder: /docs
+```
+
+公開URL:
+
+```txt
+https://mikiyasa1122-hey.github.io/Code-Quest/
+```
+
 ## 重要な実装メモ
 
 - 回答提出は`/api/quests/[questId]/submit`で処理します。
