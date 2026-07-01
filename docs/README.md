@@ -4,6 +4,8 @@ This folder contains the DB-free static version of Code Quest.
 
 - It runs directly on GitHub Pages.
 - Quest data lives in `app.js`.
+- It includes 20 starter quests.
+- It includes animated cards, progress bars, map motion, and a correct-answer celebration.
 - Progress, XP, badges, and answer history are saved in each browser's `localStorage`.
 - The full-stack Next.js + Prisma + PostgreSQL version remains in `src/` and `prisma/`.
 

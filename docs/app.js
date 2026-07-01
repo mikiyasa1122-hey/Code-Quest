@@ -137,6 +137,183 @@ const quests = [
     xpReward: 160,
     choices: ['"0"', "[]", '""', "{}"],
     answer: '""'
+  },
+  {
+    id: "html-alt-text",
+    categoryId: "html",
+    title: "画像に説明をつける",
+    description: "アクセシビリティに必要な画像属性を選びます。",
+    content: "画像が表示されない場合やスクリーンリーダー向けに、画像の説明文を入れる属性はどれですか？",
+    explanation:
+      "alt属性は画像の代替テキストです。見た目だけでなく、アクセシビリティや検索エンジンにも関係します。",
+    type: "multiple",
+    difficulty: "beginner",
+    xpReward: 40,
+    choices: ["src", "href", "alt", "target"],
+    answer: "alt"
+  },
+  {
+    id: "html-form-label",
+    categoryId: "html",
+    title: "入力欄とラベルを結ぶ",
+    description: "フォームでlabelとinputを関連づける方法を答えます。",
+    content: "label要素のfor属性には、input要素のどの属性値を指定しますか？",
+    explanation:
+      "labelのforにはinputのidを指定します。クリック領域が広がり、支援技術にもフォームの意味が伝わります。",
+    type: "text",
+    difficulty: "normal",
+    xpReward: 70,
+    acceptedAnswers: ["id", "inputのid", "input id"]
+  },
+  {
+    id: "css-grid-columns",
+    categoryId: "css",
+    title: "Gridの列を作る",
+    description: "CSS Gridで列幅を指定するプロパティを答えます。",
+    content: "CSS Gridで、列の数や幅を指定するプロパティ名は何ですか？",
+    explanation:
+      "grid-template-columnsはGridコンテナの列トラックを定義します。repeat(3, 1fr)のような指定もできます。",
+    type: "text",
+    difficulty: "normal",
+    xpReward: 75,
+    acceptedAnswers: ["grid-template-columns"]
+  },
+  {
+    id: "css-responsive-unit",
+    categoryId: "css",
+    title: "画面幅に応じる単位",
+    description: "ビューポート幅を基準にしたCSS単位を選びます。",
+    content: "画面幅の1%を表すCSS単位はどれですか？",
+    explanation:
+      "vwはviewport widthの略で、1vwは画面幅の1%です。画面高さならvhを使います。",
+    type: "multiple",
+    difficulty: "beginner",
+    xpReward: 45,
+    choices: ["em", "rem", "vw", "px"],
+    answer: "vw"
+  },
+  {
+    id: "js-map-return",
+    categoryId: "javascript",
+    title: "配列を変換するmap",
+    description: "数値配列を2倍にした新しい配列を返します。",
+    content: "numbers配列の各値を2倍にした新しい配列を返すdouble関数を書いてください。",
+    explanation:
+      "mapは元の配列をもとに、新しい配列を作ります。各要素を変換したいときに便利です。",
+    type: "code",
+    difficulty: "normal",
+    xpReward: 85,
+    starterCode: "function double(numbers) {\n  // ここに処理を書きます\n}",
+    requiredTokens: ["function double", "return", "map", "* 2"]
+  },
+  {
+    id: "js-async-await",
+    categoryId: "javascript",
+    title: "Promiseを待つキーワード",
+    description: "非同期処理の結果を待つJavaScriptキーワードを答えます。",
+    content: "async関数の中でPromiseの完了を待つために使うキーワードは何ですか？",
+    explanation:
+      "awaitはPromiseの解決を待ちます。awaitを使う関数は基本的にasync関数として定義します。",
+    type: "text",
+    difficulty: "normal",
+    xpReward: 70,
+    acceptedAnswers: ["await"]
+  },
+  {
+    id: "ts-union-type",
+    categoryId: "typescript",
+    title: "状態をUnion型で表す",
+    description: "literal unionで状態を限定します。",
+    content: "Status型を、文字列'loading'または'success'または'error'だけを許可する型として定義してください。",
+    explanation:
+      "Union型を使うと、値の候補を限定できます。状態管理では想定外の文字列を防げます。",
+    type: "code",
+    difficulty: "hard",
+    xpReward: 120,
+    starterCode: "// Status型を定義してください",
+    requiredTokens: ["type status", "loading", "success", "error"]
+  },
+  {
+    id: "ts-optional-property",
+    categoryId: "typescript",
+    title: "任意プロパティを読む",
+    description: "TypeScriptで省略可能なプロパティを表す記号を答えます。",
+    content: "User型のavatarUrlを省略可能なstringプロパティにしたいとき、プロパティ名の後ろにつける記号は何ですか？",
+    explanation:
+      "?を使うと、そのプロパティは存在しない可能性があることを型で表せます。例: avatarUrl?: string",
+    type: "text",
+    difficulty: "beginner",
+    xpReward: 55,
+    acceptedAnswers: ["?", "question mark"]
+  },
+  {
+    id: "react-props",
+    categoryId: "react",
+    title: "親から子へ渡す値",
+    description: "Reactでコンポーネントに値を渡す仕組みを答えます。",
+    content: "Reactで親コンポーネントから子コンポーネントへ渡す値のことを何と呼びますか？",
+    explanation:
+      "propsはコンポーネントへ外から渡される値です。UIを再利用しやすくするための基本です。",
+    type: "text",
+    difficulty: "beginner",
+    xpReward: 50,
+    acceptedAnswers: ["props", "prop"]
+  },
+  {
+    id: "react-list-key",
+    categoryId: "react",
+    title: "リストに必要なkey",
+    description: "Reactでリスト描画するときに必要な属性を選びます。",
+    content: "配列をmapで描画するとき、各要素を識別するためによく指定する特別な属性はどれですか？",
+    explanation:
+      "keyはReactがリスト内の要素を識別するために使います。安定したidを使うのが理想です。",
+    type: "multiple",
+    difficulty: "normal",
+    xpReward: 75,
+    choices: ["name", "key", "idName", "indexOnly"],
+    answer: "key"
+  },
+  {
+    id: "db-primary-key",
+    categoryId: "database",
+    title: "主キーの役割",
+    description: "DBでレコードを一意に識別するキーを答えます。",
+    content: "データベースのテーブルで、各レコードを一意に識別するためのキーを何と呼びますか？",
+    explanation:
+      "主キー、またはprimary keyは、テーブル内の各行を一意に識別するための制約です。",
+    type: "text",
+    difficulty: "beginner",
+    xpReward: 60,
+    acceptedAnswers: ["主キー", "primary key", "primarykey"]
+  },
+  {
+    id: "db-relation",
+    categoryId: "database",
+    title: "外部キーでつながる関係",
+    description: "テーブル同士を結びつけるキーを選びます。",
+    content: "別テーブルの主キーを参照して、テーブル同士を関連づけるキーはどれですか？",
+    explanation:
+      "外部キーは別テーブルの行を参照するためのキーです。リレーション設計の中心になります。",
+    type: "multiple",
+    difficulty: "normal",
+    xpReward: 80,
+    choices: ["primary key", "foreign key", "access key", "secret key"],
+    answer: "foreign key"
+  },
+  {
+    id: "fullstack-boss-flow",
+    categoryId: "database",
+    title: "回答保存フローBoss",
+    description: "回答提出時のサーバー処理順を見極めるBoss問題です。",
+    content:
+      "学習アプリで回答を提出したとき、履歴保存・進捗更新・XP付与をまとめて安全に行うために使うDBの仕組みはどれですか？",
+    explanation:
+      "トランザクションを使うと、複数のDB更新をまとめて成功または失敗として扱えます。学習履歴とXPのズレを防げます。",
+    type: "multiple",
+    difficulty: "boss",
+    xpReward: 180,
+    choices: ["transaction", "animation", "stylesheet", "viewport"],
+    answer: "transaction"
   }
 ];
 
@@ -156,6 +333,13 @@ const badges = [
     isEarned: (state) => state.totalCorrect >= 5
   },
   {
+    id: "ten-clear",
+    name: "Ten Wins",
+    description: "10問に正解する。",
+    short: "10",
+    isEarned: (state) => state.totalCorrect >= 10
+  },
+  {
     id: "boss-breaker",
     name: "Boss Breaker",
     description: "Boss難易度の問題に正解する。",
@@ -170,6 +354,18 @@ const badges = [
     isEarned: (state) => {
       const jsQuestIds = quests.filter((quest) => quest.categoryId === "javascript").map((quest) => quest.id);
       return jsQuestIds.every((questId) => state.completedQuestIds.includes(questId));
+    }
+  },
+  {
+    id: "fullstack-boss",
+    name: "Full-stack Boss",
+    description: "Boss難易度の問題を2問クリアする。",
+    short: "FS",
+    isEarned: (state) => {
+      const clearedBossCount = quests.filter(
+        (quest) => quest.difficulty === "boss" && state.completedQuestIds.includes(quest.id)
+      ).length;
+      return clearedBossCount >= 2;
     }
   }
 ];
@@ -201,6 +397,29 @@ function loadState() {
 
 function saveState(state) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function launchCelebration() {
+  const layer = document.createElement("div");
+  const colors = ["#0f766e", "#2563eb", "#7c3aed", "#d97706", "#be123c"];
+  layer.className = "celebration-layer";
+
+  for (let index = 0; index < 28; index += 1) {
+    const spark = document.createElement("span");
+    const angle = (Math.PI * 2 * index) / 28;
+    const distance = 90 + Math.random() * 150;
+    spark.className = "spark";
+    spark.style.setProperty("--spark-x", `${Math.cos(angle) * distance}px`);
+    spark.style.setProperty("--spark-y", `${Math.sin(angle) * distance}px`);
+    spark.style.setProperty("--spark-color", colors[index % colors.length]);
+    spark.style.left = `${46 + Math.random() * 8}%`;
+    spark.style.top = `${38 + Math.random() * 12}%`;
+    spark.style.animationDelay = `${Math.random() * 120}ms`;
+    layer.appendChild(spark);
+  }
+
+  document.body.appendChild(layer);
+  window.setTimeout(() => layer.remove(), 1100);
 }
 
 function calculateLevel(xp) {
@@ -272,7 +491,7 @@ function renderQuestCard(quest, state) {
   const category = getCategory(quest.categoryId);
   const completed = state.completedQuestIds.includes(quest.id);
   return `
-    <a class="quest-card" href="#/quest/${quest.id}">
+    <a class="quest-card" href="#/quest/${quest.id}" style="--card-color:${category.color}">
       <div>
         <div class="card-topline">
           <span class="pill category" style="background:${category.color}">${category.name}</span>
@@ -529,6 +748,9 @@ function renderQuest(questId) {
     };
 
     saveState(nextState);
+    if (evaluation.isCorrect) {
+      launchCelebration();
+    }
     const level = calculateLevel(nextState.xp);
     const earnedBadgeNames = badges.filter((badge) => badge.isEarned(nextState)).map((badge) => badge.name);
 

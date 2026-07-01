@@ -72,6 +72,8 @@ pnpm dev
 - DB接続なし
 - ログインなし
 - 問題データは`docs/app.js`
+- 初期問題は20問
+- カード、マップ、正解演出、進捗バーにアニメーションあり
 - 進捗、XP、バッジ、回答履歴はブラウザの`localStorage`に保存
 - 本格運用向けのNext.js + Prisma + PostgreSQL版は`src/`と`prisma/`に残しています
 
